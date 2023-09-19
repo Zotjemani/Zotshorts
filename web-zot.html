@@ -97,8 +97,9 @@
         </video>
     </div>
     <div class="myButton-psisi"> 
-        <a href="#" class="myButton">+</a>
+       <a href="#" class="myButton">+</a>
     </div>
+
 
     <div class="loading" id="loadingText">Loading...</div>
     <div class="video-title" id="videoTitle">Video Title</div>
@@ -139,11 +140,9 @@
             video.play();
         }
 
-        window.addEventListener('wheel', (e) => {
-            if (e.deltaY > 0) {
-                // Scroll ke bawah
-                playRandomVideo();
-            }
+       window.addEventListener('touchstart', (e) => {
+          playRandomVideo();
+
         });
 
         video.addEventListener('ended', () => {
