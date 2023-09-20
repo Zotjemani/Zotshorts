@@ -33,18 +33,32 @@
         }
 
         .loading {
-            color: white;
-            font-size: 24px;
+            width: 56px;
+            height: 56px;
+            background: repeating-conic-gradient(#0000 0 90deg, #21023d 0 180deg),
+                repeating-conic-gradient(#47022a 0 90deg, #0000 0 180deg);
+            background-size: 17.9px 17px;
+            background-position: 0 0;
+            animation: loading-60mq8qmd 2s infinite;
+        }
+
+
+
+
+        @keyframes loading-60mq8qmd{
+            100% {
+                background-position: 0px 35.8px, 17.9px 0px;
+            }
         }
 
         .video-title {
             color: white;
             font-size: 20px;
             position: absolute;
-            bottom: 100px;
+            top: 20px;
             left: 20px;
             padding: 10px;
-            background-color: rgba(0, 150, 0, 0.2);
+            background-color: rgba(0, 0, 0, 0.2);
         }
 
         .myButton {
@@ -73,7 +87,8 @@
         .myButton:hover {
             background-color: #000080;
         }
-        .myButton-psisi{
+
+        .myButton-psisi {
             position: absolute;
             bottom: 30px;
             right: 20px;
@@ -85,7 +100,7 @@
         }
     </style>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0", user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" , user-scalable=no">
     <title>Zot</title>
 </head>
 
@@ -96,12 +111,12 @@
             <source src="video1.mp4" type="video/mp4">
         </video>
     </div>
-    <div class="myButton-psisi"> 
-       <a href="https://drive.google.com/drive/folders/1--5EhoFID3sj70TOjJsNCsJDAtsGDSGF" class="myButton">+</a>
+    <div class="myButton-psisi">
+        <a href="https://drive.google.com/drive/folders/1--5EhoFID3sj70TOjJsNCsJDAtsGDSGF" class="myButton">+</a>
     </div>
 
 
-    <div class="loading" id="loadingText">Loading...</div>
+    <div class="loading" id="loadingText"></div>
     <div class="video-title" id="videoTitle">Video Title</div>
     <script>
         const video = document.getElementById('video');
@@ -115,9 +130,9 @@
             { src: 'video5.mp4', title: 'fakta menarik liver' },
             { src: 'video6.mp4', title: 'gajak mabar lu' },
             { src: 'Video7.mp4', title: '4357' },
-            { src: 'Viddo8.mp4', title: '2023' },
+            { src: '#', title: '2023' },
             { src: 'Video9.mp4', title: 'ml gloo' }
-        
+
         ]; // Ganti dengan nama video Anda
 
         function getRandomVideo() {
@@ -144,9 +159,13 @@
             video.play();
         }
 
-       window.addEventListener('touchstart', (e) => {
-          playRandomVideo();
+        window.addEventListener('touchmove', playRandomVideo);
 
+        window.addEventListener('wheel', (e) => {
+            if (e.deltaY > 0) {
+                // Scroll ke bawah
+                playRandomVideo();
+            }
         });
 
         video.addEventListener('ended', () => {
